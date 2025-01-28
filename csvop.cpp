@@ -110,15 +110,18 @@ void write(string filename="filtered_students.csv", vector<Student> stu=students
     fstream file;
     file.open(filename,ios::out);
     file << "ID,Name,Age,Major,GPA" << endl;
-    for (Student student : stu)
+    if (file)
     {
-        file << student.ID << ","
-             << student.Name << ","
-             << student.age << ","
-             << student.Major << ","
-             << student.GPA << endl;
+        for (Student student : stu)
+        {
+            file << student.ID << ","
+                << student.Name << ","
+                << student.age << ","
+                << student.Major << ","
+                << student.GPA << endl;
+        }
+        cout << "Data written successfully to " << filename << endl;
     }
-    cout << "Data written successfully to " << filename << endl;
     file.close();
 }
 
