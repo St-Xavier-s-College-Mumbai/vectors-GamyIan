@@ -1,6 +1,11 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17878665)
 Programming Question: CSV Data Handling with Vectors
 ----------------------------------------------------
+Name: Ian Reddy
+
+Roll: 21
+
+UID: 2405024
 
 **Problem Statement**You are required to create a C++ program that performs the following operations on a CSV file containing student data:
 
