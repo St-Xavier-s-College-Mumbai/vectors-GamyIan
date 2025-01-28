@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <sstream>
+#include <math.h>
 
 using namespace std;
 
@@ -93,11 +94,42 @@ vector<Student> filterGPA(float n)
     return filtered;
 }
 
+float avgAge()
+{
+    int sum=0, count=0;
+    for (Student student : students)
+    {
+        sum+=student.age;
+        count++;
+    }
+    return float(sum)/count;
+}
+
+void write(string filename="filtered_students.csv", vector<Student> stu=students)
+{
+    fstream file;
+    file.open(filename,ios::out);
+    file << "ID,Name,Age,Major,GPA" << endl;
+    for (Student student : stu)
+    {
+        file << student.ID << ","
+             << student.Name << ","
+             << student.age << ","
+             << student.Major << ","
+             << student.GPA << endl;
+    }
+    cout << "Data written successfully to " << filename << endl;
+    file.close();
+}
+
 int main()
 {
     read();
     display(); // Displaying All Students
     cout << endl;
     display(filterGPA(3.0)); // Displaying only Students with GPA Higher than 3.0
+    cout << endl;
+    cout << "Average Age: " << avgAge() << endl; //Displaying Average Age
+    write("filtered_students.csv", filterGPA(3.0)); // Writing to CSV
     return 0;
 }
