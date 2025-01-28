@@ -62,14 +62,14 @@ void read(string filename="students.csv")
     file.close();
 }
 
-void display()
+void display(vector<Student> stu=students)
 {
     cout << left << setw(10) << "ID"
          << setw(15) << "Name"
          << setw(10) << "Age"
          << setw(20) << "Major"
          << setw(5) << "GPA" << endl;
-    for (Student student : students)
+    for (Student student : stu)
     {
         cout << left << setw(10) << student.ID
              << setw(15) << student.Name
@@ -79,9 +79,25 @@ void display()
     }
 }
 
+vector<Student> filterGPA(float n)
+{
+    vector<Student> filtered;
+    filtered.clear();
+    for (Student student : students)
+    {
+        if (student.GPA > n)
+        {
+            filtered.push_back(student);
+        }
+    }
+    return filtered;
+}
+
 int main()
 {
     read();
-    display();
+    display(); // Displaying All Students
+    cout << endl;
+    display(filterGPA(3.0)); // Displaying only Students with GPA Higher than 3.0
     return 0;
 }
